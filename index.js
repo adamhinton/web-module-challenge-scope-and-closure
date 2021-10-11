@@ -125,9 +125,28 @@ Use the scoreboard function below to do the following:
   Home and Away team's scores for each inning.  Not the cummulative score.
   5. If there's a tie at the end of the innings, add this message containing the score to the end of the array:  "This game will require extra innings: Away 12 - Home 12"  (see tie example below) */
 
-  function scoreboard(getInningScore(), inning(), inningsLeftTask5, inningScoreArray) {
-    
-  }
+  function scoreboard(getInningScore, inning, inningsLeftTask5) {
+    let homeScore = 0;
+    let awayScore = 0;
+    let endArray = [];
+    for(let i=0; i<inningsLeftTask5; i++){
+      homeScore = homeScore + getInningScore(inning).Home;
+      awayScore = awayScore + getInningScore(inning).Away;
+      endArray.push(`Inning ${i+1}: Away ${awayScore} - Home ${homeScore}`,)
+    }
+let 
+    return endArray;
+  };
+
+  console.log(scoreboard(getInningScore, inning, 9))
+
+//return array with both teams scores
+  //team scores, keep track of score in each inning so each inning value, make a total for each team,
+
+
+// console.log(scoreboard(getInningScore, inning, 9))
+
+// need for loop probably? maybe an individual variable for each inning score?
 
   /*
   
