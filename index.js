@@ -28,12 +28,21 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   Study the code for counter1 and counter2, then answer the questions below.
   
   1. What is the difference between counter1 and counter2?
-  
+  In counter1, count is defined inside the function. In counter2, conut is defined outside the function.
+
   2. Which of the two uses a closure? How can you tell?
-  
+  Counter2? Because it has an inner variable that is defined outside the code.
+
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
+Count1 is function scoped so it's only referenced in that function. It keeps track of only what's done to count in that function. Count2 is global scoped and good for when you want to do things to count across multiple functions and even multiple js files.
+
 */
+
+//notes for me: Counter1 lets us reference count through that variable is count = 0.
+// can run this in diff times/places and keep track of different counts.
+
+//count2: Can use this globally. Will have mutltiple js files across projects. 2 is better for when you're keeping track of count in multiple places.
 
 // counter1 code
 function counterMaker() {
@@ -62,9 +71,11 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning(){
+    return Math.floor(Math.random() *3);
 }
+
+console.log(inning());
 
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
@@ -81,17 +92,27 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*code Here*/){
-  /*Code Here*/
-}
+function finalScore(inningcb, inningsLeft){
+ let home = 0;
+let away = 0;
+for(let i= 0; i< inningsLeft; i++){
+    home = home + inningcb(); away = away + inningcb();
+  }
+  return {"Home": home, "Away": away}
+  }
+  
+  // console.log(finalScore(inning(), 9))
+
+
+
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
+function getInningScore(inningcb) {
+  return {"Home": inningcb(), "Away": inningcb()}
 }
 
 
@@ -102,8 +123,15 @@ Use the scoreboard function below to do the following:
   3. Receive a number of innings to be played
   4. Return an array where each of it's index values equals a string stating the
   Home and Away team's scores for each inning.  Not the cummulative score.
-  5. If there's a tie at the end of the innings, add this message containing the score to the end of the array:  "This game will require extra innings: Away 12 - Home 12"  (see tie example below)
-     If there isn't a tie, add this message to the end of the array: "Final Score: Away 13 - Home 11"  (see no tie example below)
+  5. If there's a tie at the end of the innings, add this message containing the score to the end of the array:  "This game will require extra innings: Away 12 - Home 12"  (see tie example below) */
+
+  function scoreboard(getInningScore(), inning(), inningsLeftTask5, inningScoreArray) {
+    
+  }
+
+  /*
+  
+  If there isn't a tie, add this message to the end of the array: "Final Score: Away 13 - Home 11"  (see no tie example below)
   
   NO TIE example: invoking scoreboard(getInningScore,inning, 9) might return 
   an array of strings like this:
@@ -136,9 +164,7 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
-}
+
 
 
 
